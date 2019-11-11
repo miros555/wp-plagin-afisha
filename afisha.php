@@ -3,6 +3,22 @@
  * Plugin Name: Afisha
  */
 
+/**************Добавляем новую ссылку в меню Админ Консоли******************/
+// Хук событие 'admin_menu', запуск функции 'mfp_Add_My_Admin_Link()'
+add_action( 'admin_menu', 'mfp_Add_My_Admin_Link' );
+ 
+function mfp_Add_My_Admin_Link()
+{
+ add_menu_page(
+ 'My First Page', // Название страниц (Title)
+ 'Афиша', // Текст ссылки в меню
+ 'manage_options', // Требование к возможности видеть ссылку 
+ '/post.php?post=332&action=edit', // 'slug' - файл отобразится по нажатию на ссылку
+ '','',
+ 3
+ );
+}
+
 /*Добавляем новый и регистрируем кастомный тип записи*/
 add_action( 'init', 'true_register_post_type_init' );
 
